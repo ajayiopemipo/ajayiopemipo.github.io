@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Opemipo Ajayi - Portfolio</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #e0f0ff, #f9f5ff, #fef6e4);
+      color: #1f2933;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 32px 16px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 980px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      border-radius: 24px;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.15);
+      padding: 28px 20px 32px;
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        padding: 36px 40px 40px;
+      }
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+      text-align: center;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.4);
+      padding-bottom: 24px;
+      margin-bottom: 28px;
+    }
+
+    .avatar {
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid #2563eb;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .title-block h1 {
+      font-size: 1.9rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .title-block p {
+      margin-top: 6px;
+      font-size: 0.98rem;
+      color: #4b5563;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+      justify-content: center;
+    }
+
+    .pill {
+      font-size: 0.78rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.08);
+      color: #1d4ed8;
+      border: 1px solid rgba(129, 140, 248, 0.4);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .btn {
+      padding: 9px 16px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.1s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      color: white;
+      box-shadow: 0 10px 22px rgba(79, 70, 229, 0.45);
+    }
+
+    .btn-outline {
+      background: white;
+      color: #1f2933;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 26px rgba(15, 23, 42, 0.23);
+    }
+
+    main {
+      display: grid;
+      gap: 24px;
+    }
+
+    @media (min-width: 900px) {
+      main {
+        grid-template-columns: 1.3fr 1fr;
+        gap: 28px;
+      }
+    }
+
+    section {
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+
+    h2 span.icon {
+      font-size: 1.2rem;
+    }
+
+    p, li {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: #374151;
+    }
+
+    .subdued {
+      font-size: 0.86rem;
+      color: #6b7280;
+      margin-top: 3px;
+    }
+
+    ul {
+      list-style: none;
+      margin-top: 6px;
+    }
+
+    li::before {
+      content: "•";
+      color: #6366f1;
+      margin-right: 6px;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .chip {
+      font-size: 0.8rem;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.04);
+      border: 1px solid rgba(148, 163, 184, 0.65);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    @media (min-width: 600px) {
+      .projects-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .project-card {
+      border-radius: 16px;
+      padding: 12px 12px 14px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(209, 213, 219, 0.9);
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+      transition: transform 0.1s ease, box-shadow 0.1s ease, border 0.1s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 26px rgba(15, 23, 42, 0.18);
+      border-color: rgba(129, 140, 248, 0.9);
+    }
+
+    .project-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #111827;
+    }
+
+    .project-meta {
+      font-size: 0.78rem;
+      color: #6b7280;
+      margin-bottom: 6px;
+    }
+
+    .project-desc {
+      font-size: 0.86rem;
+      color: #374151;
+    }
+
+    footer {
+      margin-top: 16px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 0.8rem;
+      text-align: center;
+      color: #9ca3af;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="avatar">
+        <img src="https://raw.githubusercontent.com/ajayiopemipo/ajayiopemipo.github.io/1ef49f2b47680de6098137c85bb0616da5d05a1b/WhatsApp%20Image%202025-11-27%20at%2017.51.13.jpeg
+" alt="Portrait of Ope Ajayi" />
+      </div>
+
+      <div class="title-block">
+        <h1>Ope Ajayi</h1>
+        <p>Mobile App Developer | Flutter & Firebase | Aspiring AI Engineer | Data Enthusiast | UI/UX Designer</p>
+
+        <div class="pill-row">
+          <span class="pill">Flutter & Firebase</span>
+          <span class="pill">Data & AI Enthusiast</span>
+          <span class="pill">UI/UX Minded</span>
+        </div>
+      </div>
+
+      <div class="actions">
+        <a class="btn btn-primary" href="mailto:your-ajayiopemipo12@gmail.com">
+          ✉ Email Me
+        </a>
+
+        <a class="btn btn-outline" href="https://github.com/ajayiopemipo" target="_blank" rel="noopener">
+          💻 View GitHub
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <!-- Left column: About + Projects -->
+      <div>
+        <section>
+          <h2><span class="icon">👋</span> About Me</h2>
+          <p>
+            I am a passionate and creative mobile app developer with experience in Flutter, Firebase,
+            and UI/UX design. My interest in technology grew from my love for computers and design during
+            secondary school, and I further developed my skills during a 6-month internship where I worked
+            on UI/UX, mobile apps, and data extraction.
+          </p>
+          <p style="margin-top:8px;">
+            I enjoy building real applications that solve real problems—especially in mobile development,
+            data analysis, and tools that support organizations and communities. I am also deeply interested
+            in artificial intelligence and eager to learn everything behind how AI systems work—from data
+            processing and machine learning fundamentals to real-world applications like recommendation
+            systems, automation, and intelligent mobile features. I am actively expanding my knowledge in AI
+            and excited about building applications that combine mobile technology with intelligent,
+            data-driven capabilities.
+          </p>
+        </section>
+
+      <!-- Right column: Skills + Education + Experience -->
+      <div>
+        <section>
+          <h2><span class="icon">🧠</span> Skills & Interests</h2>
+
+          <p class="subdued">Core skills</p>
+          <div class="chip-row">
+            <span class="chip">Flutter (Dart)</span>
+            <span class="chip">Firebase (Auth, Firestore)</span>
+            <span class="chip">UI/UX Design</span>
+            <span class="chip">Data Extraction & Cleaning</span>
+            <span class="chip">Python (beginner)</span>
+          </div>
+
+          <p class="subdued" style="margin-top:10px;">AI & data interests</p>
+          <div class="chip-row">
+            <span class="chip">Artificial Intelligence</span>
+            <span class="chip">Machine Learning</span>
+            <span class="chip">Intelligent Mobile Apps</span>
+            <span class="chip">Data-driven Features</span>
+          </div>
+        </section>
+
+        <section>
+          <h2><span class="icon">🎓</span> Education</h2>
+          <p><strong>Babcock University</strong></p>
+          <p>BSc Software Engineering – Graduated July 2025</p>
+          <p class="subdued">Approximate CGPA: 4.00 / 5.00</p>
+        </section>
+
+        <section>
+          <h2><span class="icon">💼</span> Experience</h2>
+          <p>
+            <strong>RCCG ICT Plaza – IT Program</strong><br />
+            UI/UX design for web and mobile, mobile application development with Flutter, data extraction
+            and cleaning, and contributions to church portals and administrative tools.
+          </p>
+          <p style="margin-top:10px;">
+            <strong>6-Month Internship</strong><br />
+            Built production-style mobile apps including a time-telling app and a coffee ordering app,
+            while strengthening foundations in software engineering, design, and data handling.
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      © 2025 Opemipo Ajayi • Built with ❤️ using HTML & CSS
+    </footer>
+  </div>
+</body>
+</html>
